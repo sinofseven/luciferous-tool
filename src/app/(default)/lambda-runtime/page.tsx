@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch, SetStateAction } from "react";
 
 type RuntimeInfo = {
   aws_execution_env: string;
@@ -7,7 +7,9 @@ type RuntimeInfo = {
   time: string;
 };
 
-async function getRuntimes(setRuntimes) {
+async function getRuntimes(
+  setRuntimes: Dispatch<SetStateAction<RuntimeInfo[] | null>>,
+) {
   const data = await fetch(
     "https://drobr13dalzke.cloudfront.net/runtime_summary.json",
   );
